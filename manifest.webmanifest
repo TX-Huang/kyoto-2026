@@ -1,0 +1,10 @@
+{
+  "name": "旅行手帳",
+  "short_name": "旅行手帳",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#EDE8DF",
+  "theme_color": "#B23A2E",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
