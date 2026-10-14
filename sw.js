@@ -1,6 +1,6 @@
 // 離線用：網站本身、字型、GSAP 都存進手機。網頁本身每次背景更新，下次打開就是新版。
-const CACHE = "kyoto-20261014174823";
-const CORE = ["./", "index.html", "manifest.webmanifest", "icon.svg"];
+const CACHE = "kyoto-20261014190517";
+const CORE = ["./", "index.html", "manifest.webmanifest", "icon.svg", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "icon-maskable-512.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => {
   // 同一個網域可能還有別的專案，只清自己的舊版
