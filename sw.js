@@ -1,5 +1,5 @@
 // 離線用：網站本身、字型、GSAP 都存進手機。網頁本身每次背景更新，下次打開就是新版。
-const CACHE = "kyoto-20261016150726";
+const CACHE = "kyoto-20261016221135";
 const CORE = ["./", "index.html", "manifest.webmanifest", "icon.svg", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "icon-maskable-512.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => {
@@ -13,6 +13,7 @@ self.addEventListener("fetch", e => {
   const same = url.origin === location.origin;
   const allowed = same || /fonts\.(googleapis|gstatic)\.com$|cdnjs\.cloudflare\.com$/.test(url.hostname);
   if (!allowed) return;
+  if (same && url.pathname.endsWith("/version.json")) return; // 版本號一定要問網路，不能用存在手機的
   if (same && req.mode === "navigate") {
     // 打開網站：有網路就先拿新版（打開一次就是最新的）；網路太慢（4 秒）或沒網路才用手機裡存的
     e.respondWith(caches.open(CACHE).then(async c => {
